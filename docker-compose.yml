@@ -1,0 +1,32 @@
+# ═══════════════════════════════════════════════════════════════
+# ImpetusAI Workplace Platform — Docker Compose (MVP)
+# Run: docker-compose up --build
+# ═══════════════════════════════════════════════════════════════
+
+services:
+  # ── Backend (FastAPI) ────────────────────────────────────────
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: impetusai-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/uploads:/app/backend/uploads
+      - ./backend/chroma_data:/app/backend/chroma_data
+      - ./backend/.env:/app/backend/.env:ro
+      - ./ai:/app/ai:ro
+    environment:
+      - DATABASE_URL=sqlite+aiosqlite:///./impetusai.db
+    restart: unless-stopped
+
+  # ── Frontend (React + Vite) ─────────────────────────────────
+  frontend:
+    build: ./frontend
+    container_name: impetusai-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
