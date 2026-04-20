@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Secrets & Keys
+*secret*
+*.key
+*.pem
+credentials.json
+token.pickle
+
+# Packages
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Databases & Vector Stores
+chroma_data/
+*.sqlite3
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# OS specific
+.DS_Store
+Thumbs.db
